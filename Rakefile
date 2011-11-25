@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/CraigWilliams/hulu-show"
   gem.license = "BSD"
   gem.summary = %Q{Fetches all current season episodes for a specified show.}
-  gem.description = %Q{Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details.}
+  gem.description = %Q{Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details about the episode.}
   gem.email = "cwilliams.allancraig@gmail.com"
   gem.authors = ["Craig Williams"]
   # dependencies defined in Gemfile
@@ -38,12 +38,12 @@ end
 
 task :default => :spec
 
-require 'rake/task'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+# require 'rake/task'
+# Rake::Task.new do |rdoc|
+  # version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "hulu-show #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+  # rdoc.rdoc_dir = 'rdoc'
+  # rdoc.title = "hulu-show #{version}"
+  # rdoc.rdoc_files.include('README*')
+  # rdoc.rdoc_files.include('lib/**/*.rb')
+# end
