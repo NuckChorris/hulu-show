@@ -16,10 +16,10 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "hulu-show"
   gem.homepage = "http://github.com/CraigWilliams/hulu-show"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "cwilliams@allancraig.net"
+  gem.license = "BSD"
+  gem.summary = %Q{Fetches all current season episodes for a specified show.}
+  gem.description = %Q{Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details.}
+  gem.email = "cwilliams.allancraig@gmail.com"
   gem.authors = ["Craig Williams"]
   # dependencies defined in Gemfile
 end
@@ -38,7 +38,7 @@ end
 
 task :default => :spec
 
-require 'rake/rdoctask'
+require 'rake/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 

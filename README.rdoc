@@ -1,6 +1,6 @@
 = hulu-show
 
-Description goes here.
+Hulu::Show fetches all episodes for the current season of a specified show.
 
 == Contributing to hulu-show
  
