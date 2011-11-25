@@ -9,7 +9,8 @@ gem install hulu-show
 require 'hulu/show'
 
 Hulu::Show.new('Burn Notice').episodes
-=> [#<Hulu::Episode:0x007fa8f2832938 @episode="13", @title="Damned If You Do", @running_time="43:09", @air_date="11/03/2011">]
+
+[#<Hulu::Episode:0x007fa8f2832938 @episode="13", @title="Damned If You Do", @running_time="43:09", @air_date="11/03/2011">]
 
 
 
