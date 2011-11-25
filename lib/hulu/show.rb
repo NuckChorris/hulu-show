@@ -1,3 +1,6 @@
+require 'hulu/show/base'
+require 'hulu/show/episode'
+
 class Hulu::Show < Hulu::Base
   attr_accessor :name
 
