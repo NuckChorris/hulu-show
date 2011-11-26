@@ -1,21 +1,34 @@
+# encoding: utf-8
+
 require 'hulu/show/base'
 require 'hulu/show/episode'
 
 class Hulu::Show < Hulu::Base
-  attr_accessor :name
+  attr_accessor :network,
+    :title,
+    :genre,
+    :description
 
-  def initialize(name)
-    @name = name
+  def initialize(title)
+    @title    = title
     @episodes = []
+    @doc      = Hulu.query(@title)
+    parse_show_details
   end
 
   def episodes
-    doc = Hulu.query(self.name)
-    parse_episodes(doc)
+    parse_episodes
   end
 
-  def parse_episodes(doc)
-    episodes = doc.css("#show-expander table")
+  def parse_show_details
+    details      = @doc.css(".fixed-lg.container .section.details .relative .info")
+    @network     = details[0].text.strip
+    @genre       = details[2].text.split('|').first.gsub(/\302\240/, ' ').strip
+    @description = details[3].text.strip
+  end
+
+  def parse_episodes
+    episodes = @doc.css("#show-expander table")
 
     episodes.each_with_index do |episode, i|
       # There are several tables under the show-expander

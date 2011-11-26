@@ -1,0 +1,25 @@
+#==============================================================
+# Fetching more data about a show
+#==============================================================
+# http://www.hulu.com/api/oembed.json?url=http://www.hulu.com/watch/20807/late-night-with-conan-obrien-wed-may-21-2008
+# http://www.hulu.com/api/oembed.json?url=http://www.hulu.com/watch/261293/burn-notice-mind-games
+
+{
+    "thumbnail_width": 145,
+    "type": "video",
+    "title": "Shadows (Warehouse 13)",
+    "embed_url": "http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg",
+    "thumbnail_height": 80,
+    "height": 296,
+    "provider_name": "Hulu",
+    "width": 512,
+    "html": "<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>",
+    "provider_url": "http://www.hulu.com/",
+    "duration": 2584.25,
+    "version": "1.0",
+    "cache_age": 3600,
+    "air_date": "Mon Sep 12 00:00:00 UTC 2011",
+    "thumbnail_url": "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg",
+    "author_name": "Syfy"
+}
+

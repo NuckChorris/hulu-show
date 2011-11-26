@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 ---
 - !ruby/struct:VCR::HTTPInteraction
   request: !ruby/struct:VCR::Request
@@ -1244,15 +1246,11 @@
       \           <div class=\"details-bg-container\" style=\"width:100%\">\n              <h2
       class=\"cufonable\">Title Details</h2>\n            </div>\n            <div
       class=\"relative\">\n              <div class=\"label\">Network / Studio</div>\n
-      \             <div class=\"info\"><a href=\"/companies/16\" class=\"show-title\">USA</a></div>\n
+      \             <div class=\"info\"><a href=\"/companies/16\" class=\"show-title\"><%= network %></a></div>\n
       \ \n              <div class=\"label\">Title</div>\n              <div class=\"info\"><h1>Burn
       Notice</h1></div>\n  \n              \n              <div class=\"label\">Genres</div>\n
-      \             <div class=\"info\"><b><a href=\"http://www.hulu.com/genres/Action-and-Adventure\"
-      class=\"show-title\">Action and Adventure</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"http://www.hulu.com/genres/Drama\"
-      class=\"show-title\">Drama</a></b></div>\n              \n  \n              <div
-      class=\"label\">Description</div>\n              <div class=\"info\">A &quot;burned&quot;
-      spy returns to Miami where he uses his special ops training to help those in
-      need, and bring justice against the men who wrongly burned him.\n</div>\n  \n
+      \             <div class=\"info\"><%= genre %></div>\n              \n  \n              <div
+      class=\"label\">Description</div>\n              <div class=\"info\"><%= description %></div>\n  \n
       \             \n              \n            </div>\n            <br style=\"clear:both;\"
       />\n            \n              <div class=\"ext-show-link-container\"><div
       class=\"ext-show-link\">For insider news, photos, and more visit the official
