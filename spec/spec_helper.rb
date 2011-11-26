@@ -11,6 +11,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 VCR.config do |c|
   c.cassette_library_dir = 'spec/support/vcr_cassettes'
   c.stub_with :fakeweb
+  c.allow_http_connections_when_no_cassette = true
 end
 
 RSpec.configure do |config|

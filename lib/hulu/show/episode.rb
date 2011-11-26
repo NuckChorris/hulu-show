@@ -3,15 +3,19 @@ class Hulu::Episode < Hulu::Base
     :episode,
     :running_time,
     :air_date,
-    :season
-    
+    :season,
+    :url,
+    :beaconid
+
   def initialize
     yield self if block_given?
   end
 
   def process(episode)
-    @episode = episode.css('td.c0').text.strip
-    @title   = episode.css('td.c1 a').text.strip
+    @episode   = episode.css('td.c0').text.strip
+    @title     = episode.css('td.c1 a').text.strip
+    @url       = episode.css('td.c1 a').attr('href').text.strip
+    @beacondid = episode.css('td.c1 a').attr('beaconid').text.strip
     parse_running_time(episode)
   end
 

@@ -7,17 +7,34 @@ class Hulu::Show < Hulu::Base
   attr_accessor :network,
     :title,
     :genre,
-    :description
+    :description,
+    :errors,
+    :episodes,
+    :url
 
   def initialize(title)
     @title    = title
     @episodes = []
     @doc      = Hulu.query(@title)
+    @errors   = []
+
+    if error_404
+      @errors << "404: Show not found" 
+      return
+    end
+
     parse_show_details
+    parse_episodes
+    set_url
   end
 
-  def episodes
-    parse_episodes
+  def set_url
+    @url = "#{Hulu::BASE_URI}/#{Hulu::Base.prepare_name(@title)}"
+  end
+
+  def error_404
+    error = @doc.css('.fixed-lg .section .gr').text.strip
+    error =~ /404/ ? true : false
   end
 
   def parse_show_details
@@ -40,7 +57,6 @@ class Hulu::Show < Hulu::Base
         end
       end
     end
-    @episodes
   end
 
 end

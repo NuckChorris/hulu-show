@@ -29,4 +29,12 @@ module Hulu
     show_name = Hulu::Base.prepare_name(show_name)
     Hulu::Fetcher::Page.get("#{BASE_URI}/#{show_name}")
   end
+
+  def self.shows(titles)
+    shows = []
+    titles.each do |title|
+      shows << Hulu::Show.new(title)
+    end
+    shows
+  end
 end
