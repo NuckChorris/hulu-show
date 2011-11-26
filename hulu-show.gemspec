@@ -26,10 +26,11 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "hulu-show.gemspec",
     "lib/hulu.rb",
-    "lib/hulu/base.rb",
-    "lib/hulu/episode.rb",
     "lib/hulu/show.rb",
+    "lib/hulu/show/base.rb",
+    "lib/hulu/show/episode.rb",
     "spec/hulu/show_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/vcr_cassettes/burn_notice.yml"
