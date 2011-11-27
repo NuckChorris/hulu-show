@@ -5,16 +5,16 @@
 
 Gem::Specification.new do |s|
   s.name = "hulu-show"
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Craig Williams"]
-  s.date = "2011-11-25"
+  s.date = "2011-11-27"
   s.description = "Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details about the episode."
   s.email = "cwilliams.allancraig@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "hulu-show.gemspec",
@@ -31,9 +31,14 @@ Gem::Specification.new do |s|
     "lib/hulu/show.rb",
     "lib/hulu/show/base.rb",
     "lib/hulu/show/episode.rb",
+    "notes.txt",
+    "spec/hulu/base_spec.rb",
+    "spec/hulu/episode_spec.rb",
     "spec/hulu/show_spec.rb",
     "spec/spec_helper.rb",
-    "spec/support/vcr_cassettes/burn_notice.yml"
+    "spec/support/vcr_cassettes/additional_attributes.yml",
+    "spec/support/vcr_cassettes/burn_notice.yml",
+    "spec/support/vcr_cassettes/non_existent_show.yml"
   ]
   s.homepage = "http://github.com/CraigWilliams/hulu-show"
   s.licenses = ["BSD"]
