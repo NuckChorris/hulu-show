@@ -67,8 +67,8 @@ describe Hulu::Show do
       episode.running_time.should == '43:09'
       episode.air_date.should     == '11/03/2011'
       episode.episode.should      == '13'
-      episode.url                 == "http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do#x-4,cEpisodes,1,0"
-      episode.beaconid            == '296648'
+      episode.url.should          == "http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do#x-4,cEpisodes,1,0"
+      episode.beaconid.should     == '296648'
 
       # additional_attributes
       episode.thumbnail_url.should == "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg"
@@ -101,8 +101,14 @@ describe Hulu::Show do
 
     it 'should find the beaconid' do
       episodes = Hulu::Show.new('Terra Nova').episodes
+      episode = episodes.first
 
-      episodes.first.beaconid.should == '302363'
+      episode.beaconid.should     == '302363'
+      episode.title.should        == 'Vs.'
+      episode.running_time.should == '42:14'
+      episode.air_date.should     == '11/21/2011'
+      episode.episode.should      == '8'
+      episode.url.should          == "http://www.hulu.com/watch/302363/terra-nova-vs#x-0,vepisode,1,0"
     end
   end
 
