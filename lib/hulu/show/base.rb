@@ -21,7 +21,7 @@ module Hulu
 
   class Base
     def self.prepare_name(name)
-      name.downcase.gsub("\s", '-')
+      name.downcase.gsub("\s", '-').gsub('&', 'and').gsub(':', '')
     end
   end
 

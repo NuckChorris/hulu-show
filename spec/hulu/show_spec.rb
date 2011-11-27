@@ -112,4 +112,24 @@ describe Hulu::Show do
     end
   end
 
+  context "Show name has special characters" do
+    before do 
+      Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      VCR.insert_cassette('special_victims_unit')
+    end
+
+    after { VCR.eject_cassette }
+
+    it 'should find the correct show' do
+      episodes = Hulu::Show.new('Law & Order: Special Victims Unit').episodes
+      episode = episodes.first
+
+      episode.beaconid.should     == '300844'
+      episode.title.should        == 'Educated Guess'
+      episode.running_time.should == '44:04'
+      episode.air_date.should     == '11/16/2011'
+      episode.episode.should      == '8'
+      episode.url.should          == "http://www.hulu.com/watch/300844/law-and-order-special-victims-unit-educated-guess#x-0,vepisode,1,0"
+    end
+  end
 end
