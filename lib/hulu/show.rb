@@ -26,6 +26,8 @@ class Hulu::Show < Hulu::Base
     parse_show_details
     parse_episodes
     set_url
+
+    @doc = nil
   end
 
   def set_url
