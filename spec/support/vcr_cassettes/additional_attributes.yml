@@ -1,0 +1,33 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.hulu.com:80/api/oembed.json?url=http://www.hulu.com/watch/296648/damned-if-you-do
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      content-type:
+      - application/json; charset=utf-8
+      status:
+      - 200 OK
+      x-ua-compatible:
+      - IE=EmulateIE9; IE=EmulateIE7
+      content-length:
+      - '803'
+      cache-control:
+      - max-age=3544
+      date:
+      - Sat, 26 Nov 2011 23:08:44 GMT
+    body: ! '{"author_name":"USA","type":"video","thumbnail_width":145,"thumbnail_height":80,"title":"Damned
+      If You Do (Burn Notice)","width":512,"provider_name":"Hulu","embed_url":"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ","version":"1.0","duration":2589.67,"height":296,"provider_url":"http://www.hulu.com/","air_date":"Thu
+      Nov 03 00:00:00 UTC 2011","html":"<object width=\"512\" height=\"296\"><param
+      name=\"movie\" value=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\"></param><param
+      name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\"
+      type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>","cache_age":3600,"thumbnail_url":"http://thumbnails.hulu.com/8/60000008/60000008_145x80_generated.jpg"}'
+    http_version: '1.1'

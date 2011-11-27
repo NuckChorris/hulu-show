@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'json'
+
 require 'spec_helper'
 
 describe Hulu::Show do
@@ -19,7 +21,32 @@ describe Hulu::Show do
       }
     }
 
-    before { VCR.insert_cassette('burn_notice', erb: burn_notice_erb) }
+    let(:additional_attributes) { 
+      {
+          "thumbnail_width" => 145,
+          "type" => "video",
+          "title" => "Shadows (Warehouse 13)",
+          "embed_url" =>  "http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg",
+          "thumbnail_height" => 80,
+          "height" =>  296,
+          "provider_name" => "Hulu",
+          "width" => 512,
+          "html" => "<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>",
+          "provider_url" => "http://www.hulu.com/",
+          "duration" => 2584.25,
+          "version" => "1.0",
+          "cache_age" => 3600,
+          "air_date" => "Mon Sep 12 00:00:00 UTC 2011",
+          "thumbnail_url" => "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg",
+          "author_name" => "Syfy"
+      }
+    }
+
+    before do
+      Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      VCR.insert_cassette('burn_notice', erb: burn_notice_erb)
+    end
+
     after { VCR.eject_cassette }
 
     it "show attributes should be set" do
@@ -41,12 +68,16 @@ describe Hulu::Show do
       episode.episode.should      == '13'
       episode.url                 == "http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do#x-4,cEpisodes,1,0"
       episode.beaconid            == '296648'
+
+      # additional_attributes
+      episode.thumbnail_url.should == "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg"
     end
 
     it "has the correct number of episodes" do
       episodes = Hulu::Show.new('Burn Notice').episodes
       episodes.count.should == 1
     end
+
   end
 
   context "When show not found" do
