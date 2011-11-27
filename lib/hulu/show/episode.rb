@@ -46,4 +46,17 @@ class Hulu::Episode < Hulu::Base
     Hulu::Fetcher::Page.get(url).parsed_response
   end
 
+  def to_param
+    {
+      title: title,
+      episode: episode,
+      running_time: running_time,
+      air_date: air_date,
+      season: season,
+      url: url,
+      beaconid: beaconid,
+      thumbnail_url: thumbnail_url,
+      embed_html: embed_html
+    }
+  end
 end

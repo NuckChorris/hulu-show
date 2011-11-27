@@ -61,4 +61,15 @@ class Hulu::Show < Hulu::Base
     end
   end
 
+  def to_param
+    {
+      network: network,
+      title: title,
+      genre: genre,
+      description: description,
+      url: url,
+      episodes: episodes.map { |e| e.to_param }
+    }
+  end
+
 end
