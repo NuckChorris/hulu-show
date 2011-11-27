@@ -6,6 +6,27 @@ require 'spec_helper'
 
 describe Hulu::Show do
 
+  let(:additional_attributes) { 
+    {
+        "thumbnail_width" => 145,
+        "type" => "video",
+        "title" => "Shadows (Warehouse 13)",
+        "embed_url" =>  "http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg",
+        "thumbnail_height" => 80,
+        "height" =>  296,
+        "provider_name" => "Hulu",
+        "width" => 512,
+        "html" => "<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>",
+        "provider_url" => "http://www.hulu.com/",
+        "duration" => 2584.25,
+        "version" => "1.0",
+        "cache_age" => 3600,
+        "air_date" => "Mon Sep 12 00:00:00 UTC 2011",
+        "thumbnail_url" => "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg",
+        "author_name" => "Syfy"
+    }
+  }
+
   context "When show is found" do
     let(:burn_notice_erb) { 
       {
@@ -21,26 +42,6 @@ describe Hulu::Show do
       }
     }
 
-    let(:additional_attributes) { 
-      {
-          "thumbnail_width" => 145,
-          "type" => "video",
-          "title" => "Shadows (Warehouse 13)",
-          "embed_url" =>  "http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg",
-          "thumbnail_height" => 80,
-          "height" =>  296,
-          "provider_name" => "Hulu",
-          "width" => 512,
-          "html" => "<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>",
-          "provider_url" => "http://www.hulu.com/",
-          "duration" => 2584.25,
-          "version" => "1.0",
-          "cache_age" => 3600,
-          "air_date" => "Mon Sep 12 00:00:00 UTC 2011",
-          "thumbnail_url" => "http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg",
-          "author_name" => "Syfy"
-      }
-    }
 
     before do
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
@@ -87,6 +88,21 @@ describe Hulu::Show do
     it "contains an error when show not found" do
       show = Hulu::Show.new("Non-existent show")
       show.errors.should include("404: Show not found")
+    end
+  end
+
+  context "When Terra Nova" do
+    before do 
+      Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      VCR.insert_cassette('terra_nova', erb: {beaconid: '302363'} )
+    end
+
+    after { VCR.eject_cassette }
+
+    it 'should find the beaconid' do
+      episodes = Hulu::Show.new('Terra Nova').episodes
+
+      episodes.first.beaconid.should == '302363'
     end
   end
 

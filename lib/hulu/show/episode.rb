@@ -24,8 +24,9 @@ class Hulu::Episode < Hulu::Base
   def process(episode)
     @episode   = episode.css('td.c0').text.strip rescue ''
     @title     = episode.css('td.c1 a').text.strip rescue ''
-    @url       = episode.css('td.c1 a').attr('href').text.strip rescue ''
-    @beaconid = episode.css('td.c1 a').attr('beaconid').text.strip rescue ''
+    @url       = episode.css('td.c1 .vex-h a').last.attr('href').strip rescue ''
+    @beaconid  = episode.css('td.c1 .vex-h a').last.attr('beaconid').strip rescue ''
+
     parse_running_time(episode)
   end
 

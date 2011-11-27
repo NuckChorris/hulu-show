@@ -54,8 +54,8 @@ class Hulu::Show < Hulu::Base
       # we are only interested in the first
       break if i > 0
       episode.css('tr.r').each do |episode_info|
-        @episodes << Hulu::Episode.new do |episode|
-          episode.process(episode_info)
+        @episodes << Hulu::Episode.new do |epi|
+          epi.process(episode_info)
         end
       end
     end
@@ -68,7 +68,8 @@ class Hulu::Show < Hulu::Base
       genre: genre,
       description: description,
       url: url,
-      episodes: episodes.map { |e| e.to_param }
+      episodes: episodes.map { |e| e.to_param },
+      errors: errors
     }
   end
 
