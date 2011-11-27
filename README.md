@@ -46,8 +46,6 @@ Hulu::Show fetches all episodes for the current season of a specified show.
 `Hulu.shows(['Burn Notice', 'Warehouse 13'])`
 
 
-== Copyright
-
 Copyright (c) 2011 Craig Williams. See LICENSE.txt for
 further details.
 
