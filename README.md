@@ -1,4 +1,6 @@
+
 # hulu-show
+
 [![Build Status](https://secure.travis-ci.org/CraigWilliams/hulu-show.png)](http://travis-ci.org/CraigWilliams/hulu-show)
 
 Hulu::Show fetches all episodes for the current season of the specified show.
