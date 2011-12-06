@@ -37,10 +37,10 @@ Hulu::Show fetches all episodes for the current season of the specified show.
 
 ## Retrieve show episodes
 
-```burn_notice.episodes```
+```burn_notice.episodes
 
-    [#<Hulu::Episode:0x007f961a02be00 @episode="13", @title="Damned If You Do", @url="http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do?c=Action-and-Adventure#x-4,cEpisodes,1,0", @beaconid="296648", @running_time="43:09", @air_date="11/03/2011", @embed_html="<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>", @thumbnail_url="http://thumbnails.hulu.com/8/60000008/60000008_145x80_generated.jpg">]
-
+[#<Hulu::Episode:0x007f961a02be00 @episode="13", @title="Damned If You Do", @url="http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do?c=Action-and-Adventure#x-4,cEpisodes,1,0", @beaconid="296648", @running_time="43:09", @air_date="11/03/2011", @embed_html="<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/c96sZQru3w567PP7t3cGZQ\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>", @thumbnail_url="http://thumbnails.hulu.com/8/60000008/60000008_145x80_generated.jpg">]
+```
 
 ## Retrieve multiple shows with their episodes at one time.
 
