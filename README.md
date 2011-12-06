@@ -1,4 +1,3 @@
-
 # hulu-show
 
 [![Build Status](https://secure.travis-ci.org/CraigWilliams/hulu-show.png)](http://travis-ci.org/CraigWilliams/hulu-show)
