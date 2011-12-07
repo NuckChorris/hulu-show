@@ -20,7 +20,7 @@ class Hulu::Episode < Hulu::Base
     @embed_html    = info['html']
     @thumbnail_url = info['thumbnail_url']
 
-    if @air_date.empty?
+    if @air_date && @air_date.empty?
       @air_date = Date.parse(info['air_date']).strftime("%m-%d-%Y")
     end
   end

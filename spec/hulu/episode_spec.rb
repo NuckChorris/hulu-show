@@ -4,7 +4,7 @@ describe Hulu::Episode do
 
     before { VCR.insert_cassette('additional_attributes') }
     after { VCR.eject_cassette }
-  
+
     it "episode can fetch additional attributes" do
       episode = Hulu::Episode.new do |episode|
         episode.beaconid = '296648'
