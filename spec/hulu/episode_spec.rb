@@ -8,7 +8,7 @@ describe Hulu::Episode do
     it "episode can fetch additional attributes" do
       episode = Hulu::Episode.new do |episode|
         episode.beaconid = '296648'
-        episode.title = 'Damned If You Do'
+        episode.title    = 'Damned If You Do'
         episode.additional_attributes
       end
 

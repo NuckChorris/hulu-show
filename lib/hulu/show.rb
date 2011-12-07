@@ -18,7 +18,7 @@ class Hulu::Show < Hulu::Base
     @doc      = Hulu.query(@title)
     @errors   = []
 
-    if error_404
+    if error_404?
       @errors << "404: Show not found" 
       return
     end
@@ -34,7 +34,7 @@ class Hulu::Show < Hulu::Base
     @url = "#{Hulu::BASE_URI}/#{Hulu::Base.prepare_name(@title)}"
   end
 
-  def error_404
+  def error_404?
     error = @doc.css('.fixed-lg .section .gr').text.strip
     error =~ /404/ ? true : false
   end
