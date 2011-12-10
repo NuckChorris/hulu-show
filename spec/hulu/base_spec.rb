@@ -13,7 +13,6 @@ describe Hulu do
 		shows = Hulu.shows(titles)
 
 		shows.count.should == 3
-		# shows.first.episodes.first.title.should == 'What'
 	end
 
 end
