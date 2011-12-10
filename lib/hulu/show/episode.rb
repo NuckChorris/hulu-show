@@ -7,22 +7,37 @@ class Hulu::Episode < Hulu::Base
     :url,
     :beaconid,
     :thumbnail_url,
-    :embed_html
+    :embed_html,
+    :description,
+    :show_title
 
-  def initialize
+  def initialize(show_title = '')
+    self.show_title = show_title
+
     yield self if block_given?
 
     set_additional_attributes
   end
 
   def set_additional_attributes
-    info = additional_attributes
+    info           = additional_attributes
     @embed_html    = info['html']
     @thumbnail_url = info['thumbnail_url']
 
     if @air_date && @air_date.empty?
       @air_date = Date.parse(info['air_date']).strftime("%m-%d-%Y")
     end
+  end
+
+  def fetch_description
+    show_name = Hulu::Base.prepare_name(@show_title)
+    title     = Hulu::Base.prepare_name(@title)
+    url       = "http://www.hulu.com/watch/#{@beaconid}/#{show_name}-#{title}"
+    info      = Hulu::Fetcher::Page.get(url).parsed_response
+
+    d         = info.css('#description-contents').text.strip rescue ''
+
+    @description = d.split('Hide Description').first if d
   end
 
   def process(season, episode)
@@ -54,6 +69,7 @@ class Hulu::Episode < Hulu::Base
 
   def to_param
     {
+      show_title: show_title,
       title: title,
       episode: episode,
       running_time: running_time,
@@ -62,7 +78,8 @@ class Hulu::Episode < Hulu::Base
       url: url,
       beaconid: beaconid,
       thumbnail_url: thumbnail_url,
-      embed_html: embed_html
+      embed_html: embed_html,
+      description: description
     }
   end
 end

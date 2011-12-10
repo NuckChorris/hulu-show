@@ -56,7 +56,7 @@ class Hulu::Show < Hulu::Base
       season = episode.css('tr.srh td').first.text.strip rescue ''
 
       episode.css('tr.r').each do |episode_info|
-        @episodes << Hulu::Episode.new do |epi|
+        @episodes << Hulu::Episode.new(@title) do |epi|
           epi.process(season, episode_info)
         end
       end
