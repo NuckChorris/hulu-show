@@ -31,10 +31,6 @@ module Hulu
   end
 
   def self.shows(titles)
-    shows = []
-    titles.each do |title|
-      shows << Hulu::Show.new(title)
-    end
-    shows
+    titles.map { |title| Hulu::Show.new(title) }
   end
 end

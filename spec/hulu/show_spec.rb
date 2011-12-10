@@ -42,9 +42,12 @@ describe Hulu::Show do
       }
     }
 
+    let(:description) { "A wayward soul searches for redemption in a land of unforgiveness." }
 
     before do
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      Hulu::Episode.any_instance.stub(:fetch_description).and_return(description)
+
       VCR.insert_cassette('burn_notice', erb: burn_notice_erb)
     end
 
@@ -95,6 +98,8 @@ describe Hulu::Show do
   context "When Terra Nova" do
     before do 
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      Hulu::Episode.any_instance.stub(:fetch_description).and_return("No mans land")
+
       VCR.insert_cassette('terra_nova', erb: {beaconid: '302363'} )
     end
 
@@ -117,6 +122,8 @@ describe Hulu::Show do
   context "Show name has special characters" do
     before do 
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      Hulu::Episode.any_instance.stub(:fetch_description).and_return("No mans land")
+
       VCR.insert_cassette('special_victims_unit')
     end
 

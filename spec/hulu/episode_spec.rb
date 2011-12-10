@@ -4,7 +4,11 @@ describe Hulu::Episode do
 
   context "Additional Attributes" do
 
-    before { VCR.insert_cassette('additional_attributes') }
+    before do
+      Hulu::Episode.any_instance.stub(:fetch_description).and_return("No mans land")
+      VCR.insert_cassette('additional_attributes')
+    end
+
     after { VCR.eject_cassette }
 
     it "episode can fetch additional attributes" do
