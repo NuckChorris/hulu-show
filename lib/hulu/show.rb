@@ -53,9 +53,11 @@ class Hulu::Show < Hulu::Base
       # There are several tables under the show-expander
       # we are only interested in the first
       break if i > 0
+      season = episode.css('tr.srh td').first.text.strip rescue ''
+
       episode.css('tr.r').each do |episode_info|
         @episodes << Hulu::Episode.new do |epi|
-          epi.process(episode_info)
+          epi.process(season, episode_info)
         end
       end
     end

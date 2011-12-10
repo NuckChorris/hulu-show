@@ -66,6 +66,7 @@ describe Hulu::Show do
       episode.title.should        == 'Burn baby burn'
       episode.running_time.should == '43:09'
       episode.air_date.should     == '11/03/2011'
+      episode.season.should       == '5'
       episode.episode.should      == '13'
       episode.url.should          == "http://www.hulu.com/watch/296648/burn-notice-damned-if-you-do#x-4,cEpisodes,1,0"
       episode.beaconid.should     == '296648'
@@ -108,6 +109,7 @@ describe Hulu::Show do
       episode.running_time.should == '42:14'
       episode.air_date.should     == '11/21/2011'
       episode.episode.should      == '8'
+      episode.season.should       == '1'
       episode.url.should          == "http://www.hulu.com/watch/302363/terra-nova-vs#x-0,vepisode,1,0"
     end
   end
@@ -129,6 +131,7 @@ describe Hulu::Show do
       episode.running_time.should == '44:04'
       episode.air_date.should     == '11/16/2011'
       episode.episode.should      == '8'
+      episode.season.should       == '13'
       episode.url.should          == "http://www.hulu.com/watch/300844/law-and-order-special-victims-unit-educated-guess#x-0,vepisode,1,0"
     end
   end

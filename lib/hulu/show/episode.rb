@@ -25,7 +25,8 @@ class Hulu::Episode < Hulu::Base
     end
   end
 
-  def process(episode)
+  def process(season, episode)
+    @season    = season.scan(/\d+/).first
     @episode   = episode.css('td.c0').text.strip rescue ''
     @title     = episode.css('td.c1 a').text.strip rescue ''
     @url       = episode.css('td.c1 .vex-h a').last.attr('href').strip rescue ''
