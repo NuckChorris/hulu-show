@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "hulu-show"
-  s.version = "0.3.2"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Craig Williams"]
-  s.date = "2011-11-27"
+  s.date = "2011-12-10"
   s.description = "Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details about the episode."
   s.email = "cwilliams.allancraig@gmail.com"
   s.extra_rdoc_files = [
@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     ".rvmrc",
+    ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
@@ -38,6 +39,7 @@ Gem::Specification.new do |s|
     "spec/spec_helper.rb",
     "spec/support/vcr_cassettes/additional_attributes.yml",
     "spec/support/vcr_cassettes/burn_notice.yml",
+    "spec/support/vcr_cassettes/description.yml",
     "spec/support/vcr_cassettes/law_and_order_special_victims_unit.yml",
     "spec/support/vcr_cassettes/non_existent_show.yml",
     "spec/support/vcr_cassettes/special_victims_unit.yml",
