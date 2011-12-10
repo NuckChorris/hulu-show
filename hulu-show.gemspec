@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "hulu-show"
-  s.version = "0.4.1"
+  s.version = "0.4.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Craig Williams"]
@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "spec/support/vcr_cassettes/description.yml",
     "spec/support/vcr_cassettes/law_and_order_special_victims_unit.yml",
     "spec/support/vcr_cassettes/non_existent_show.yml",
+    "spec/support/vcr_cassettes/shows.yml",
     "spec/support/vcr_cassettes/special_victims_unit.yml",
     "spec/support/vcr_cassettes/terra_nova.yml"
   ]
