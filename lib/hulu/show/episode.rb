@@ -17,6 +17,7 @@ class Hulu::Episode < Hulu::Base
     yield self if block_given?
 
     set_additional_attributes
+    fetch_description
   end
 
   def set_additional_attributes
@@ -30,6 +31,7 @@ class Hulu::Episode < Hulu::Base
   end
 
   def fetch_description
+    puts "\n\nFetching Description:\n"
     show_name = Hulu::Base.prepare_name(@show_title)
     title     = Hulu::Base.prepare_name(@title)
     url       = "http://www.hulu.com/watch/#{@beaconid}/#{show_name}-#{title}"
@@ -38,6 +40,8 @@ class Hulu::Episode < Hulu::Base
     d         = info.css('#description-contents').text.strip rescue ''
 
     @description = d.split('Hide Description').first if d
+
+    puts "Description: #{@description}\nInfo: #{info.css('#description-contents')}"
   end
 
   def process(season, episode)
