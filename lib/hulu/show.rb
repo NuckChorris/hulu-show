@@ -35,15 +35,15 @@ class Hulu::Show < Hulu::Base
   end
 
   def error_404?
-    error = @doc.css('.fixed-lg .section .gr').text.strip
+    error = @doc.css('.fixed-lg .section .gr').text.strip rescue ''
     error =~ /404/ ? true : false
   end
 
   def parse_show_details
     details      = @doc.css(".fixed-lg.container .section.details .relative .info")
-    @network     = details[0].text.strip
-    @genre       = details[2].text.split('|').first.gsub(/\302\240/, ' ').strip
-    @description = details[3].text.strip
+    @network     = details[0].text.strip rescue ''
+    @genre       = details[2].text.split('|').first.gsub(/\302\240/, ' ').strip rescue ''
+    @description = details[3].text.strip rescue ''
   end
 
   def parse_episodes
