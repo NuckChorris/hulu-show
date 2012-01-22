@@ -1,3 +1,9 @@
+# Updates
+
+  01/22/2012
+
+  Added coming_soon attribute to Episode
+
 # hulu-show
 
 [![Build Status](https://secure.travis-ci.org/CraigWilliams/hulu-show.png)](http://travis-ci.org/CraigWilliams/hulu-show)
@@ -24,7 +30,8 @@ Hulu::Show fetches all episodes for the current season of a specified show.
     :url,
     :beaconid,
     :thumbnail_url,
-    :embed_html
+    :embed_html,
+    :coming_soon
 
 ## Usage
 

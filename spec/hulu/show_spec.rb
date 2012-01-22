@@ -168,6 +168,28 @@ describe Hulu::Show do
       episode.url.should          == "http://www.hulu.com/watch/321420/fringe-enemy-of-my-enemy?c=Science-Fiction#x-0,vepisode,1,0"
       episode.coming_soon.should  == true
     end
+
+    it "#to_param" do
+      episodes = Hulu::Show.new('Fringe').episodes
+      episode = episodes.first
+
+      params = {
+        :show_title=>"Fringe",
+        :title=>"Enemy of My Enemy",
+        :episode=>"9",
+        :running_time=>"44:00",
+        :air_date=>"01/20/2012",
+        :season=>"4",
+        :url=>"http://www.hulu.com/watch/321420/fringe-enemy-of-my-enemy?c=Science-Fiction#x-0,vepisode,1,0",
+        :beaconid=>"321420",
+        :thumbnail_url=>"http://thumbnails.hulu.com/188/40038188/40038188_145x80_generated.jpg",
+        :embed_html=>"<object width=\"512\" height=\"296\"><param name=\"movie\" value=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\"></param><param name=\"flashvars\" value=\"ap=1\"></param><embed src=\"http://www.hulu.com/embed/Gp_eWf7PQr697Ol0j7OfEg\" type=\"application/x-shockwave-flash\" width=\"512\" height=\"296\" flashvars=\"ap=1\"></embed></object>",
+        :description=>nil,
+        :coming_soon=>true
+      }
+
+      episode.to_param.should == params
+    end
   end
 
 end
