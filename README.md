@@ -4,6 +4,10 @@
 
   Added coming_soon attribute to Episode
 
+  ?
+
+  Added show_title and description attributes to Episode
+
 # hulu-show
 
 [![Build Status](https://secure.travis-ci.org/CraigWilliams/hulu-show.png)](http://travis-ci.org/CraigWilliams/hulu-show)
@@ -22,6 +26,7 @@ Hulu::Show fetches all episodes for the current season of a specified show.
 
 ## Episode attributes:
 
+    :show_title,
     :title,
     :episode,
     :running_time,
@@ -31,6 +36,7 @@ Hulu::Show fetches all episodes for the current season of a specified show.
     :beaconid,
     :thumbnail_url,
     :embed_html,
+    :description,
     :coming_soon
 
 ## Usage
