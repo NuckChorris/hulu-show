@@ -66,8 +66,8 @@ class Hulu::Episode < Hulu::Base
   end
 
   def parse_coming_soon(episode)
-    coming_soon = episode.css('td.c1 .vex-h a').first.css('img').attr('alt').value.strip rescue false
-    coming_soon ? true : false
+    cs = episode.css('td.c1 .vex-h a').first.css('img').attr('alt').value.strip rescue false
+    cs ? true : false
   end
 
   def parse_coming_soon_date
@@ -94,7 +94,8 @@ class Hulu::Episode < Hulu::Base
       beaconid: beaconid,
       thumbnail_url: thumbnail_url,
       embed_html: embed_html,
-      description: description
+      description: description,
+      coming_soon: coming_soon
     }
   end
 end
