@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "hulu-show"
-  s.version = "0.4.3"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Craig Williams"]
-  s.date = "2011-12-10"
+  s.date = "2012-01-22"
   s.description = "Really, that is about it. For each show, Hulu::Show will return an array of Episode objects with details about the episode."
   s.email = "cwilliams.allancraig@gmail.com"
   s.extra_rdoc_files = [
@@ -40,11 +40,13 @@ Gem::Specification.new do |s|
     "spec/support/vcr_cassettes/additional_attributes.yml",
     "spec/support/vcr_cassettes/burn_notice.yml",
     "spec/support/vcr_cassettes/description.yml",
+    "spec/support/vcr_cassettes/fringe.yml",
     "spec/support/vcr_cassettes/law_and_order_special_victims_unit.yml",
     "spec/support/vcr_cassettes/non_existent_show.yml",
     "spec/support/vcr_cassettes/shows.yml",
     "spec/support/vcr_cassettes/special_victims_unit.yml",
-    "spec/support/vcr_cassettes/terra_nova.yml"
+    "spec/support/vcr_cassettes/terra_nova.yml",
+    "spec/support/vcr_cassettes/white_collar.yml"
   ]
   s.homepage = "http://github.com/CraigWilliams/hulu-show"
   s.licenses = ["BSD"]
