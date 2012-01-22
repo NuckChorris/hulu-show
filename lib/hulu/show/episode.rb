@@ -9,7 +9,8 @@ class Hulu::Episode < Hulu::Base
     :thumbnail_url,
     :embed_html,
     :description,
-    :show_title
+    :show_title,
+    :coming_soon
 
   def initialize(show_title = '')
     self.show_title = show_title
@@ -42,11 +43,12 @@ class Hulu::Episode < Hulu::Base
   end
 
   def process(season, episode)
-    @season    = season.scan(/\d+/).first
-    @episode   = episode.css('td.c0').text.strip rescue ''
-    @title     = episode.css('td.c1 a').text.strip rescue ''
-    @url       = episode.css('td.c1 .vex-h a').last.attr('href').strip rescue ''
-    @beaconid  = episode.css('td.c1 .vex-h a').last.attr('beaconid').strip rescue ''
+    @season      = season.scan(/\d+/).first
+    @episode     = episode.css('td.c0').text.strip rescue ''
+    @title       = episode.css('td.c1 a').text.strip rescue ''
+    @coming_soon = parse_coming_soon(episode)
+    @url         = episode.css('td.c1 .vex-h a').last.attr('href').strip rescue ''
+    @beaconid    = episode.css('td.c1 .vex-h a').last.attr('beaconid').strip rescue ''
 
     parse_running_time(episode)
   end
@@ -61,6 +63,18 @@ class Hulu::Episode < Hulu::Base
       @running_time = episode.css('td.c4').text.strip rescue ''
       @air_date     = episode.css('td.c5').text.strip rescue ''
     end
+  end
+
+  def parse_coming_soon(episode)
+    coming_soon = episode.css('td.c1 .vex-h a').first.css('img').attr('alt').value.strip rescue false
+    coming_soon ? true : false
+  end
+
+  def parse_coming_soon_date
+    # In order to accomplish this, the episode will need access to
+    # the entire html document
+    # The following will get the available date on Hulu
+    # ("#episode-container .coming-soon span").first.text
   end
 
   def additional_attributes

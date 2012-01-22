@@ -6,7 +6,7 @@ require 'spec_helper'
 
 describe Hulu::Show do
 
-  let(:additional_attributes) { 
+  let(:additional_attributes) {
     {
         "thumbnail_width" => 145,
         "type" => "video",
@@ -28,9 +28,9 @@ describe Hulu::Show do
   }
 
   context "When show is found" do
-    let(:burn_notice_erb) { 
+    let(:burn_notice_erb) {
       {
-        title: 'Burn baby burn', 
+        title: 'Burn baby burn',
         running_time: '43:09',
         air_date: '11/03/2011',
         episode: '13',
@@ -96,7 +96,7 @@ describe Hulu::Show do
   end
 
   context "When Terra Nova" do
-    before do 
+    before do
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
       Hulu::Episode.any_instance.stub(:fetch_description).and_return("No mans land")
 
@@ -116,11 +116,12 @@ describe Hulu::Show do
       episode.episode.should      == '8'
       episode.season.should       == '1'
       episode.url.should          == "http://www.hulu.com/watch/302363/terra-nova-vs#x-0,vepisode,1,0"
+      episode.coming_soon.should  == true
     end
   end
 
   context "Show name has special characters" do
-    before do 
+    before do
       Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
       Hulu::Episode.any_instance.stub(:fetch_description).and_return("No mans land")
 
@@ -140,6 +141,33 @@ describe Hulu::Show do
       episode.episode.should      == '8'
       episode.season.should       == '13'
       episode.url.should          == "http://www.hulu.com/watch/300844/law-and-order-special-victims-unit-educated-guess#x-0,vepisode,1,0"
+      episode.coming_soon.should  == false
     end
   end
+
+  context "Coming Soon - Dish Only" do
+    before do
+      Hulu::Episode.any_instance.stub(:additional_attributes).and_return(additional_attributes)
+      Hulu::Episode.any_instance.stub(:fetch_description).and_return("Enemy of My Enemy")
+
+      VCR.insert_cassette('fringe')
+    end
+
+    after { VCR.eject_cassette }
+
+    it 'should know when its available' do
+      episodes = Hulu::Show.new('Fringe').episodes
+      episode = episodes.first
+
+      episode.beaconid.should     == '321420'
+      episode.title.should        == 'Enemy of My Enemy'
+      episode.running_time.should == '44:00'
+      episode.air_date.should     == '01/20/2012'
+      episode.episode.should      == '9'
+      episode.season.should       == '4'
+      episode.url.should          == "http://www.hulu.com/watch/321420/fringe-enemy-of-my-enemy?c=Science-Fiction#x-0,vepisode,1,0"
+      episode.coming_soon.should  == true
+    end
+  end
+
 end
