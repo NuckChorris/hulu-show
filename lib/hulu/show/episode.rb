@@ -37,7 +37,7 @@ class Hulu::Episode < Hulu::Base
     url       = "http://www.hulu.com/watch/#{@beaconid}/#{show_name}-#{title}"
     info      = Hulu::Fetcher::Page.get(url).parsed_response
 
-    d         = info.css('#description-contents').text.strip rescue ''
+    d         = info.css('#description-contents .description .video-details div div')[0].text.strip rescue ''
 
     @description = d.split('Hide Description').first if d
   end
@@ -45,7 +45,7 @@ class Hulu::Episode < Hulu::Base
   def process(season, episode)
     @season      = season.scan(/\d+/).first
     @episode     = episode.css('td.c0').text.strip rescue ''
-    @title       = episode.css('td.c1 a').text.strip rescue ''
+    @title       = episode.css('td.c1 a').text.gsub('"','').strip rescue ''
     @coming_soon = parse_coming_soon(episode)
     @url         = episode.css('td.c1 .vex-h a').last.attr('href').strip rescue ''
     @beaconid    = episode.css('td.c1 .vex-h a').last.attr('beaconid').strip rescue ''
